@@ -1,6 +1,7 @@
 $(function() {
     // 获取表单元素
     var form = layui.form
+    form.verify()
 
     // 控制表单提交
     $('.layui-form').submit(function(e) {
