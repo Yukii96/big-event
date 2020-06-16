@@ -1,7 +1,23 @@
 $(function() {
-    // 获取表单元素
+    // LAYUI是全局对象，通过它可以得到form对象
     var form = layui.form
-    form.verify()
+    // 基于layui自定义表单规则
+    form.verify({
+        // 用户名：6-8位字符。\S不包括空格
+        // 语法规范：  自定义规则名：[正则，不符合时的提示信息]
+        uname: [/^[\S]{6,8}$/,'用户名必须是6-8位字符'],
+
+        pwd: function(val,item) {   //value:对应输入域的值  item：对应的DOM元素
+            // 要求密码必须是6位数字
+            var reg = /^[\d]{6}$/
+            // 判断，如果正则规则不匹配，就返回提示
+            if (!reg.test(val)) {
+                return '密码必须是6位数字'
+            }
+
+
+        }
+    })
 
     // 控制表单提交
     $('.layui-form').submit(function(e) {
