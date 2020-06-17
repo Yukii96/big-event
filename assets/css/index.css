@@ -6,7 +6,26 @@
     margin: 0 10px;
 }
 
-/* 欢迎语样式 */
+/* 欢迎语样式、头像调整 */
+.welcome {
+    color: #fff;
+  }
+  .welcome img {
+    height: 32px;
+    margin: 14px;
+  }
+  .welcome div {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    margin: 14px;
+    background: #00988B;
+    border-radius: 16px;
+    text-align: center;
+    line-height: 32px;
+    vertical-align: middle;
+  }
+
 
 
 /* frame标签的样式 */

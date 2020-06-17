@@ -23,8 +23,9 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:;" class="welcome">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                        个人中心
+                        <!-- <img src="" class="layui-nav-img"> -->
+                    <div>L</div>
+                        <span id="nav-username"></span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="">基本资料</a></dd>
@@ -35,7 +36,8 @@
                 </li>
                 <li class="layui-nav-item">
                     
-                    <a href=""><span class="iconfont icon-tuichu"></span>退了</a></li>
+                    <a href="javascript:;" id="logout-btn"><span class="iconfont icon-tuichu"></span>退了</a>
+                </li>
             </ul>
         </div>
 
@@ -45,8 +47,8 @@
                 <!-- 顶部欢迎语 -->
                 <a href="javascript:;" class="welcome">
                     <div>L</div>
-                    <img src="" alt="">
-                    <span>欢迎xxx</span>
+                    <!-- <img src="" alt=""> -->
+                    <span>欢迎 <span id="welcome-username"></span></span>
                 </a>
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="test">
@@ -73,7 +75,7 @@
 
         <!-- 内容主体区 -->
         <div class="layui-body">
-            <!-- 内容主体区域 -->
+            <!-- 内容主体区域，通过设置高度撑开盒子 -->
             <div style="height:100%" >
                 <iframe src="./home/dashboard.html" frameborder="0" width="500" height="400"></iframe>
             </div>
