@@ -14,8 +14,15 @@ $(function() {
             if (!reg.test(val)) {
                 return '密码必须是6位数字'
             }
-
-
+        },
+        // 验证：确认密码必须和原有密码一致
+        same: function(val) {
+            // 获取原始密码
+            var pwd = $('#registerForm input[name=password]').val()
+            // 判断两次输入密码是否相同
+            if (pwd !== val) {
+                return '两次输入的密码不一致'
+            }
         }
     })
 
@@ -49,7 +56,7 @@ $(function() {
         })
     })
 
-    // 控制册页面的提交
+    // 控制注册页面的提交
     $('#registerForm').submit(function(e) {
         // 阻止事件的默认行为
         e.preventDefault()
@@ -66,6 +73,10 @@ $(function() {
                 if (res.status === 0) {
                     // 注册成功，显示登录框
                     $('#registerForm a').click()
+                } else {
+                    // 注册失败
+                    // layer是一个独立的模块，默认可以直接调用
+                    layer.msg(res.message);
                 }
             }
         })
