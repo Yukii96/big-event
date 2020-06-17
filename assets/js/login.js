@@ -37,7 +37,12 @@ $(function() {
             success: function(res) {
                 // 登陆成功后，跳转到主页面
                 if (res.status === 0) {
-                location.href = './index.html'
+                    // 把登陆成功的标志位存储到客户端
+                    localStorage.setItem('mytoken',res.token)
+
+                    // 跳转到主页面
+                    location.href = './index.html'
+
                 }
             }
         })
