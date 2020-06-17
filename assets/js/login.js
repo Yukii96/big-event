@@ -19,7 +19,7 @@ $(function() {
         }
     })
 
-    // 控制表单提交
+    // 控制登录表单提交
     $('#loginForm').submit(function(e) {
         // 阻止默认提交
         e.preventDefault()
@@ -47,6 +47,20 @@ $(function() {
                 }
             }
         })
+    })
+
+    // 登录表单底部链接“去注册”
+    $('#loginForm a').click(function() {
+        // 点击后，显示注册页面，隐藏登录页面
+        $('#loginForm').hide()
+        $('#registerForm').show()
+    })
+
+    // 注册表单底部链接“去登录”
+    $('#registerForm a').click(function() {
+        // 点击后，隐藏注册页面，显示登录页面
+        $('#loginForm').show()
+        $('#registerForm').hide()
     })
 
 
