@@ -20,7 +20,7 @@ $(function() {
     })
 
     // 控制表单提交
-    $('.layui-form').submit(function(e) {
+    $('#loginForm').submit(function(e) {
         // 阻止默认提交
         e.preventDefault()
 
@@ -41,6 +41,7 @@ $(function() {
                     localStorage.setItem('mytoken',res.token)
 
                     // 跳转到主页面
+                        // location是浏览器的内置对象--BOM,存储的是关于地址的有关的信息
                     location.href = './index.html'
 
                 }

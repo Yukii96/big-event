@@ -50,3 +50,7 @@ html,body {
 .layui-input {
     padding-left: 30px;
 }
+
+#loginForm {
+    display: none;
+}
