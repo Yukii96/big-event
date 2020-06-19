@@ -65,7 +65,7 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><span class="iconfont icon-user"></span>个人中心</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;"><i class="layui-icon layui-icon-app"></i>基本资料</a></dd>
+                            <dd><a target="iframeArea" href="./my/my-basic.html"><i class="layui-icon layui-icon-app"></i>基本资料</a></dd>
                             <dd><a href="javascript:;"><i class="layui-icon layui-icon-app"></i>更换头像</a></dd>
                             <dd><a href="javascript:;"><i class="layui-icon layui-icon-app"></i>重置密码</a></dd>
                         </dl>
@@ -78,7 +78,8 @@
         <div class="layui-body">
             <!-- 内容主体区域，通过设置高度撑开盒子 -->
             <div style="height:100%" >
-                <iframe src="./home/dashboard.html" frameborder="0" width="500" height="400"></iframe>
+                <!-- name属性用于标记iframe窗口，a标签的target属性值指向该name值，就可以吧页面跳转到该子窗口中 -->
+                <iframe name="iframeArea" src="./home/dashboard.html" frameborder="0" width="500" height="400"></iframe>
             </div>
         </div>
 
