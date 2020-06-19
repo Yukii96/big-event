@@ -10,11 +10,12 @@ $(function() {
     function loadInfo () {
         $.ajax({
             type: 'get',
-            url: 'http://ajax.frontend.itheima.net/my/userinfo',
-            headers: {
-                // my开头的请求都需要携带请求头，作用：权限验证
-                Authorization: localStorage.getItem('mytoken')
-            },
+            url: 'my/userinfo',
+            // 注意：请求头的设置放到了common文件中，进行统一调用
+            // headers: {
+            //     // my开头的请求都需要携带请求头，作用：权限验证
+            //     Authorization: localStorage.getItem('mytoken')
+            // },
             success: function(res) {
                 if (res.status === 0) {
                 // 获取用户信息                
