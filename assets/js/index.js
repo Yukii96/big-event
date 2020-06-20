@@ -30,9 +30,17 @@ $(function() {
                     if (info.user_pic) {
                         // 存在头像数据，就显示一张图片
                         // 将之前的默认的div盒子删除
-                        $('#welcome-username').parent().prev('div').remove()
+                        $('#welcome-username,#nav-username')
+                        .parent()
+                        .prev('div')
+                        .remove()
                         // 再添加一张图片
-                        $('#welcome-username').parent().prepend('<img src="'+info.user_pic+'"></img>')
+                        $('#welcome-username,#nav-username')
+                        .parent()
+                        .find('img')
+                        .remove()
+                        .end()   //作用是退回到上一次选择的元素
+                        .prepend('<img src="'+info.user_pic+'"></img>')
                     } else{
                         // 头像不存在，显示div盒子
                     }
@@ -43,6 +51,8 @@ $(function() {
         })
     }
     loadInfo()
+    // 把加载用户信息的方法，添加到$对象上（本质上就是jQuery插件）
+    $.loadInfo = loadInfo
 
     // 绑定退出按钮的事件
     $('#logout-btn').click(function() {

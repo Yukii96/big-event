@@ -51,6 +51,9 @@ $(function() {
                         // location是浏览器的内置对象--BOM,存储的是关于地址的有关的信息
                     location.href = './index.html'
 
+                } else {
+                    // 若失败，则提示错误信息
+                    layer.msg(res.message)
                 }
             }
         })
