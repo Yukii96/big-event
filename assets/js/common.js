@@ -1,4 +1,5 @@
-// 通用的接口调用设置
+$(function() {
+    // 通用的接口调用设置
 var baseURL = 'http://ajax.frontend.itheima.net/'
 $.ajaxPrefilter(function(option) {
     // option形参是jQuery请求方法的配置信息
@@ -28,4 +29,5 @@ $.ajaxPrefilter(function(option) {
     }
 
     }    
+})
 })
