@@ -17,7 +17,7 @@ $(function () {
     loadListData()
 
     // 2. 添加分类--通过弹出层方式实现
-    // 2.3 弹出层的唯一标识，在删除的时候，通过索引值去查找对应的
+    // 2.3 弹出层的唯一标识，在关闭弹出层的时候，通过索引值去查找对应的
     var addIndex = null
     // 2.1 绑定点击事件
     $('#addCategory').click(function (e) {
@@ -27,73 +27,56 @@ $(function () {
             type: 1,
             title: '添加分类',
             // 弹窗内容：在主页中再次添加模板
-            content: $('#tpl-add').html(),
+            content: $('#add-tpl').html(),
             area: ['500px', '250px']
         })
 
-        // 2.4 监听添加分类的表单提交事件（方法一）
-        $('#add-form').submit(function (e) {
-            e.preventDefault()
+        // // 2.4 监听添加分类的表单提交事件（方法一）
+        // $('#add-form').submit(function (e) {
+        //     e.preventDefault()
 
-            var fd = $(this).serialize()
+        //     var fd = $(this).serialize()
 
-            $.ajax({
-                type: 'post',
-                url: 'my/article/addcates',
-                data: fd,
-                success: function (res) {
-                    if (res.status === 0) {
-                        // 添加分类成功：提示并关闭弹窗，刷新列表
-                        layer.msg(res.message)
-                        layer.close(addIndex)
-                        loadListData()
-                    }
-                }
-            })
+        //     $.ajax({
+        //         type: 'post',
+        //         url: 'my/article/addcates',
+        //         data: fd,
+        //         success: function (res) {
+        //             if (res.status === 0) {
+        //                 // 添加分类成功：提示并关闭弹窗，刷新列表
+        //                 layer.msg(res.message)
+        //                 layer.close(addIndex)
+        //                 loadListData()
+        //             }
+        //         }
+        //     })
 
-        })
+        // })
     })
 
 
-    // // 2.4 监听添加分类的表单提交事件（方法二）
-    // $('body').on('submit', '#add-form', function (e) {
-    //     e.preventDefault()
-    //     var fd = $(this).serialize()
-
-    //     $.ajax({
-    //         type: 'post',
-    //         url: 'my/article/addcates',
-    //         data: fd,
-    //         success: function (res) {
-    //             if (res.status === 0) {
-    //                 // 添加分类成功：提示并关闭弹窗，刷新列表
-    //                 layer.msg(res.message)
-    //                 layer.close(addIndex)
-    //                 loadListData()
-    //             }
-    //         }
-    //     })
-    // })
-
-     // 4.5 监听编辑分类的表单提交事件
-     $('body').on('submit', '#edit-form', function (e) {
+    // 2.4 监听添加分类的表单提交事件（方法二）
+    $('body').on('submit', '#add-form', function (e) {
         e.preventDefault()
+        // 获取表单数据
         var fd = $(this).serialize()
-
+        // 调用接口，提交表单信息
         $.ajax({
             type: 'post',
-            url: 'my/article/updatecate',
+            url: 'my/article/addcates',
             data: fd,
             success: function (res) {
                 if (res.status === 0) {
-                    // 编辑分类成功：提示并关闭弹窗，刷新列表
+                    // 添加分类成功：提示并关闭弹窗，刷新列表
                     layer.msg(res.message)
-                    layer.close(editIndex)
+                    layer.close(addIndex)
                     loadListData()
                 }
             }
         })
     })
+
+     
 
     // 3. 删除分类
     // 3.1 监听删除按钮事件
@@ -145,8 +128,28 @@ $(function () {
                     content: $('#edit-tpl').html(),
                     area: ['500px','250px']
                 })
-                // 4.4.3 将数据填到弹窗中
-                form.val('editForm',res.data)
+                // 4.4.3 将返回的数据填到弹窗中
+                form.val('editForm',res.data)   //第一个参数为lay-filter属性的值
+            }
+        })
+    })
+
+    // 4.5 监听编辑分类的表单提交事件
+    $('body').on('submit', '#edit-form', function (e) {
+        e.preventDefault()
+        var fd = $(this).serialize()
+
+        $.ajax({
+            type: 'post',
+            url: 'my/article/updatecate',
+            data: fd,
+            success: function (res) {
+                if (res.status === 0) {
+                    // 修改分类成功：提示并关闭弹窗，刷新列表
+                    layer.msg(res.message)
+                    layer.close(editIndex)
+                    loadListData()
+                }
             }
         })
     })
