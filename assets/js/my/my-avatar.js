@@ -13,6 +13,7 @@ $(function() {
         // zoomable：类型：Boolean，默认值true。是否允许放大缩小图片。
         zoomable: false
     })
+    $img.cropper(options)
 
     // 2. 绑定上传图片按钮的点击事件
     $('#upload').click(function() {
@@ -43,9 +44,9 @@ $(function() {
     // 4. 调用接口，完成头像的修改
         // 点击确定按钮，得到当前选框中的图片，把该图片上传到服务器，成功后更新用户头像
         // 4.1 绑定事件
-        var imgURL = $('#okbtn').click(function(e) {
+        $('#okbtn').click(function(e) {
             // 4.2 获取裁剪后的图片信息
-            $img.cropper('getCropperCanvas',{
+            var imgURL = $img.cropper('getCroppedCanvas',{
                 width: 100,
                 height:100
             }).toDataURL('image/png')
@@ -64,7 +65,7 @@ $(function() {
                         layer.msg(res.message)
 
                         // 更新头像（重新获取用户信息，并加载到指定位置）
-                        window.parent.$.loadInfo   //获取当前窗口的父窗口，再调用父窗口中的方法
+                        window.parent.$.loadInfo()   //获取当前窗口的父窗口，再调用父窗口中的方法
 
                     }
                 }
