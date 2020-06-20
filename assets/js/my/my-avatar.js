@@ -3,7 +3,7 @@ $(function() {
     // 1. 实现裁剪基本初始化效果
     // 获取img标签
     var $img = $('.cropper-box img')
-    var options = $img.cropper({
+    var options = {
         // 纵横比
         aspectRatio: 1,
         // 指定预览区域
@@ -12,7 +12,7 @@ $(function() {
         autoCropArea: 0.6,
         // zoomable：类型：Boolean，默认值true。是否允许放大缩小图片。
         zoomable: false
-    })
+    }
     $img.cropper(options)
 
     // 2. 绑定上传图片按钮的点击事件
@@ -36,7 +36,7 @@ $(function() {
         var newImgURL = URL.createObjectURL(file)
         // 3.3.2 把地址更新到图片的src属性中
             // 因为裁剪区是依赖于图片的，图片改变，裁剪区也要改变
-        $img.cropper('destory')  //销毁旧的裁剪区域
+        $img.cropper('destroy')  //销毁旧的裁剪区域
         .attr('src',newImgURL)   //更新图片的路径
         .cropper(options)        //创建新的裁剪区
     })
@@ -44,7 +44,7 @@ $(function() {
     // 4. 调用接口，完成头像的修改
         // 点击确定按钮，得到当前选框中的图片，把该图片上传到服务器，成功后更新用户头像
         // 4.1 绑定事件
-        $('#okbtn').click(function(e) {
+        $('#okbtn').click(function() {
             // 4.2 获取裁剪后的图片信息
             var imgURL = $img.cropper('getCroppedCanvas',{
                 width: 100,
